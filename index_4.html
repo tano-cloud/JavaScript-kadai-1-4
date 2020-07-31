@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Basics</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        //タスク一覧
+        let taskNumbers = [0, 1, 2];
+        let contents = ['机を片づける', '牛乳を貰う', '散歩する'];
+        let genres = ['掃除', '買い物', '運動'];
+
+        //タスク一覧を表示
+        const addTask = () => {
+            console.log('========================');
+            console.log('現在持っているタスク一覧');
+            console.log('========================');
+            for (let i = 0; i < taskNumbers.length; i++) {
+                console.log(`${taskNumbers[i]}：[内容]${contents[i]}[ジャンル]${genres[i]}`);
+            };
+
+            //ユーザーが追加したい内容の情報
+            let answerContents = prompt('タスクを入力してください');
+            contents.push(answerContents);
+
+            //ユーザーが追加したいジャンル情報
+            let answerGenres = prompt('ジャンルを入力してください');
+            genres.push(answerGenres);
+
+            //タスクの数を管理
+            taskNumbers.push(taskNumbers.length);
+
+            //answerGenresに入力されたらループ開始、それまでは処理を停止
+            if (answerGenres) {
+                //1秒ごとにaddTaskをループ
+                setTimeout(addTask, 1000);
+                //answerリセット
+                answerGenres = 0;
+            }
+        };
+
+
+        window.onload = addTask;
+
+    </script>
+</body>
+
+</html>
